@@ -3,7 +3,11 @@
 -- Has d'obtenir el nom del gènere i el nombre total de pel·lícules d'aquest 
 -- gènere i ordenar-ho per ordre descendent de nombre total de pel·lícules.  
 
-SELECT movie_genre_id, COUNT(*) AS "Total"
+SELECT tb_genre.genre_name,  COUNT(*) AS "Total"
 FROM movies.tb_movie
-GROUP BY movie_genre_id
+LEFT JOIN movies.tb_genre
+	ON movies.tb_genre.genre_id = movies.tb_movie.movie_genre_id
+GROUP BY tb_movie.movie_genre_id
 ORDER BY Total DESC;
+
+
